@@ -1,0 +1,48 @@
+admin:
+  image: hobbyfarm/admin-ui:v0.2.5
+ui:
+  image: hobbyfarm/ui:v0.4.8
+gargantua:
+  image: hobbyfarm/gargantua:v0.3.0
+  logLevel: "0"
+  dynamicBaseNamePrefix: "dynamic"
+  scheduledBaseNamePrefix: "scheduled"
+
+shell:
+  replicas: 1
+
+# use insecure protocols (e.g., for local development)
+insecure: false
+
+ingress:
+  enabled: false
+  annotations: {}
+  tls:
+    enabled: true
+  hostnames:
+    # ui: example.com
+    # admin: admin.example.com
+    # backend: hf.example.com
+    # shell: shell.example.com
+
+# seed with some example data
+seed:
+  enabled: false
+
+# Override subchart versions
+ec2-operator:
+  image:
+    repository: hobbyfarm/ec2-operator
+    tag: v0.1.6
+hf-shim-operator:
+  image:
+    repository: hobbyfarm/hf-shim-operator
+    tag: v0.1.6    
+droplet-operator:
+  image:
+    repository: hobbyfarm/droplet-operator
+    tag: v0.1.2
+metal-operator:
+  image:
+    repository: hobbyfarm/metal-operator
+    tag: v0.1.2
